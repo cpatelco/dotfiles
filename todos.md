@@ -1,6 +1,12 @@
+copy doesn't work in tmux pop-up
+
 nvim
 - keymaps & options
 - lsp & formatter & ts
+
+Oil.nvim file deletion
+https://chatgpt.com/c/6a70f4db-863c-83ee-abd7-61e199878267
+https://github.com/stevearc/oil.nvim/issues/310
 
 # nvim plugins
 

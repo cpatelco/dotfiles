@@ -3,7 +3,7 @@ alias c=clear
 
 alias al=alias
 
-# alias sudo='sudo '
+alias sudo='sudo '
 
 alias cpr='cp -r'
 alias rmr='rm -r'
@@ -12,6 +12,11 @@ alias rmrf='rm -rf'
 alias ls='ls --color=auto'
 alias la='ls -AF --group-directories-first'
 alias ll='ls -AlhF --group-directories-first --color=always | less -RF'
+
+# alias sctl='systemctl'
+# alias bo='broot'
+# clh() { curl localhost:$1; }
+alias wt='watch' # -n 1
 
 #-------#
 
@@ -53,6 +58,7 @@ alias vim='nvim'
 alias lvi='nvim "+edit #<1"'
 alias v.='nvim .'
 # alias rmnvim='rm -rf ~/.config/nvim && rm -rf ~/.local/share/nvim && rm -rf ~/.local/state/nvim && rm -rf ~/.cache/nvim'
+# alias lvim='NVIM_APPNAME="lvim" nvim'
 
 #-------#
 
@@ -78,7 +84,9 @@ alias essh='nvim ~/.ssh/config'
 alias evi='nvim ~/.vimrc'
 alias etm='nvim ~/.tmux.conf'
 alias eipy='nvim ~/.ipython/profile_default/ipython_config.py'
-alias egit='nvim ~/.gitconfig'
+alias egit='nvim ~/.config/git/config'
+alias ercl='nvim ~/.bashrc.local'
+alias egitl='nvim ~/.config/git/config.local'
 
 #-------#
 
@@ -108,9 +116,7 @@ alias uvh='uv help'
 
 alias uvp='uv python'
 alias pyp='uv python pin'
-# alias pyU='uv python uninstall'
 
-alias ipython='ipython3'
 alias ipy='ipython3'
 alias ipyt='ipython3 --profile=tmp'
 alias uvipy='uv run ipython3'
@@ -197,9 +203,10 @@ __git_complete g __git_main
 
 alias lg=lazygit
 
-alias gatom='gaa && gcm -m Atomic && gpu'
+alias gato='git add --all && git commit -m Atomic'
+alias gatom='git add --all && git commit -m Atomic && git push'
 
-alias ginit='git init'
+alias gin='git init'
 alias cg='cd `git rev-parse --show-toplevel`'
 
 alias gaa='git add --all'
@@ -211,16 +218,11 @@ alias gdc='git diff --cached'
 alias gcl='git clone'
 alias gcld='git clone --depth 1'
 
-alias gco='git checkout'
-alias gcob='git checkout -b'
 alias gbk='git checkout -'
 
 alias gs='git status -sb'
 alias gst='git status'
 
-alias gcm='git commit'
-alias gcmm='git commit -m'
-# alias gcmam='git commit -am'
 alias gamend='git commit --amend --no-edit'
 
 alias gpu='git push'
@@ -234,6 +236,11 @@ alias glg='git log --graph --oneline --decorate --all'
 
 alias hbr='gh browse'
 alias ghal='gh auth login'
+alias ghr='gh repo'
+alias ghpri='gh repo edit --visibility private --accept-visibility-change-consequences'
+alias ghpub='gh repo edit --visibility public --accept-visibility-change-consequences'
+alias ghmv='gh repo rename'
+alias ghcl='gh repo clone'
 
 #-------#
 
@@ -249,6 +256,9 @@ alias dki='docker images'
 
 alias gaadl='gcloud auth application-default login'
 alias gal='gcloud auth login'
+alias gconf='gcloud config'
+alias gconfg='gcloud config get'
+alias gconfs='gcloud config set'
 alias gconfls='gcloud config configurations list'
 alias gconfa='gcloud config configurations activate'
 
@@ -258,13 +268,12 @@ alias deep='ssh deep'
 alias dist='ssh dist'
 alias smi='nvidia-smi'
 
-alias chat='nvim -c ":CodeCompanionChat" -c ":only"'
-alias chatf='nvim -c ":CodeCompanionChat adapter=openrouter model=openai/gpt-5.4-mini" -c ":only"'
-alias chatl='nvim -c ":CodeCompanionChat adapter=openrouter model=openai/gpt-5.5" -c ":only"'
+alias chat='nvim -c ":CodeCompanionChat" -c ":only" -c "startinsert"'
+alias chatf='nvim -c ":CodeCompanionChat adapter=openrouter model=openai/gpt-5.6-luna" -c ":only" -c "startinsert"'
+# alias chati='nvim -c ":CodeCompanionChat adapter=openrouter model=openai/gpt-5.5" -c ":only" -c "startinsert"'
 
 #-------#
 
-source <(kubectl completion bash)
 alias k='kubectl'
 complete -F __start_kubectl k
 
@@ -273,3 +282,12 @@ alias kdel='kubectl delete -f'
 alias krf='kubectl replace --force -f'
 alias kns='kubectl config set-context --current --namespace'
 alias kcc='kubectl config current-context'
+
+#-------#
+
+alias tf='terraform'
+alias hd='herdr'
+alias wh='which'
+
+# alias rec='asciinema rec'
+# alias play='asciinema play'

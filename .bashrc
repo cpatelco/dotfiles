@@ -1,37 +1,3 @@
-export XDG_CONFIG_HOME="$HOME/.config"
-export XDG_DATA_HOME="$HOME/.local/share"
-export XDG_CACHE_HOME="$HOME/.cache"
-export XDG_STATE_HOME="$HOME/.local/state"
-
-export PATH=$HOME/.local/bin:$HOME/bin:$HOME/.cargo/bin:$HOME/.fzf/bin:$PATH
-export PATH=$HOME/.local/share/bob/nvim-bin:$PATH
-export PATH=$HOME/.opencode/bin:$PATH
-
-export VISUAL=vi
-export EDITOR=vi
-
-export BROWSER=wslview # explorer.exe
-
-export PYTHONBREAKPOINT="ipdb.set_trace"
-
-# export RANGER_LOAD_DEFAULT_RC=FALSE
-
-export GIT_PS1_SHOWDIRTYSTATE=1
-
-source ~/.local/bin/.git-prompt.sh
-export PROMPT_COMMAND='history -a' # history -n
-PS1='\[\e[36m\]\w\[\e[0m\]$(__git_ps1 " \[\e[33m\](%s)\[\e[0m\]") '
-
-HISTCONTROL=ignoreboth:erasedups
-HISTSIZE=50000
-HISTFILESIZE=100000
-
-shopt -s histappend
-shopt -s globstar
-
-# make less more friendly for non-text input files, see lesspipe(1)
-[ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
-
 # case "$TERM" in
 #     xterm-color|*-256color) color_prompt=yes ;;
 # esac
@@ -48,6 +14,20 @@ shopt -s globstar
 
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
+
+source ~/.local/bin/.git-prompt.sh
+export PROMPT_COMMAND='history -a' # history -n
+PS1='\[\e[36m\]\w\[\e[0m\]$(__git_ps1 " \[\e[33m\](%s)\[\e[0m\]") '
+
+HISTCONTROL=ignoreboth:erasedups
+HISTSIZE=50000
+HISTFILESIZE=100000
+
+shopt -s histappend
+shopt -s globstar
+
+# make less more friendly for non-text input files, see lesspipe(1)
+[ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
 
 # See /usr/share/doc/bash-doc/examples in the bash-doc package.
 if [ -f ~/.bash_aliases ]; then
@@ -66,7 +46,7 @@ fi
 bind -m vi-insert '"\eo": "\C-z\ec\C-z"'
 
 export FZF_DEFAULT_OPTS='--layout=reverse --info=inline --ansi'
-export FZF_ALT_C_OPTS="--preview 'tree -C -L 2 {}'"
+export FZF_ALT_C_OPTS="--preview 'tree -a -C -L 2 {}'"
 
 fzf_to_nvim() {
     local file root
@@ -81,3 +61,12 @@ fzf_to_nvim() {
 bind -m vi-insert -x '"\C-p": fzf_to_nvim'
 
 # source ~/.local/bin/fzf-git.sh
+
+eval "$($HOME/.local/bin/mise activate bash)"
+eval "$(zoxide init bash)"
+eval "$(fzf --bash)"
+eval "$(uv generate-shell-completion bash)"
+eval "$(direnv hook bash)"
+# eval "$(uvx --generate-shell-completion bash)"
+
+source <(kubectl completion bash)

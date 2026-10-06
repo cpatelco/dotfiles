@@ -1,4 +1,5 @@
 -- https://github.com/neovim/nvim-lspconfig/blob/master/doc/configs.md
+-- https://github.com/neovim/nvim-lspconfig/blob/master/lsp
 -- ~/.config/nvim/after/lsp/lua_ls.lua
 
 -- Diagnostics {{{
@@ -15,9 +16,6 @@ local config = {
   severity_sort = true,
   -- virtual_lines = true,
   -- update_in_insert = true,
-  float = {
-    border = "single",
-  },
 }
 vim.diagnostic.config(config)
 -- }}}
@@ -25,12 +23,13 @@ vim.diagnostic.config(config)
 -- Create keybindings on LSP attach {{{
 vim.api.nvim_create_autocmd("LspAttach", {
   callback = function()
+    -- stylua: ignore start
     local keymap = vim.keymap.set
-    -- keymap("n", "gl", vim.diagnostic.open_float)
+
+    keymap("n", "yod", function() vim.diagnostic.enable(not vim.diagnostic.is_enabled()) end)
+    keymap("n", "yov", function() vim.diagnostic.config({ virtual_lines = not vim.diagnostic.config().virtual_lines }) end)
+    -- keymap("n", "gh", vim.diagnostic.open_float)
     -- keymap("n", "<Leader>dq", vim.diagnostic.setloclist)
-    keymap("n", "yov", function()
-      vim.diagnostic.config({ virtual_lines = not vim.diagnostic.config().virtual_lines })
-    end)
   end,
 })
 -- }}}
@@ -38,3 +37,4 @@ vim.api.nvim_create_autocmd("LspAttach", {
 vim.lsp.enable("lua_ls")
 -- vim.lsp.enable("basedpyright")
 vim.lsp.enable("ty")
+vim.lsp.enable("terraformls")

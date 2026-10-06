@@ -1,0 +1,6 @@
+.envrc
+# *.sw[nop]
+# .env
+# tmp/**/*
+
+misc/

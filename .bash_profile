@@ -1,13 +1,29 @@
+export XDG_CONFIG_HOME="$HOME/.config"
+export XDG_DATA_HOME="$HOME/.local/share"
+export XDG_CACHE_HOME="$HOME/.cache"
+export XDG_STATE_HOME="$HOME/.local/state"
+
+export PATH=$HOME/.local/bin:$HOME/bin:$HOME/.cargo/bin:$HOME/.fzf/bin:$HOME/.opencode/bin:$PATH
+
+export VISUAL=nvim
+export EDITOR=nvim
+
+# export BROWSER=Explorer.exe
+
+export PYTHONBREAKPOINT="ipdb.set_trace"
+
+# export RANGER_LOAD_DEFAULT_RC=FALSE
+
+export GIT_PS1_SHOWDIRTYSTATE=1
+
 if [ -f "$HOME/.bashrc" ]; then
     . "$HOME/.bashrc"
 fi
 
-# eval "$(direnv hook bash)"
-eval "$(fzf --bash)"
-eval "$(zoxide init bash)"
-eval "$(uv generate-shell-completion bash)"
-eval "$(uvx --generate-shell-completion bash)"
-eval "$($HOME/.local/bin/mise activate bash)"
+if [[ -f "$HOME/.bashrc.local" ]]; then
+    source "$HOME/.bashrc.local"
+fi
+
 
 # safesource() {
 #     [[ -s $1 ]] && source $1

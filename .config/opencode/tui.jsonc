@@ -4,4 +4,5 @@
     "leader_timeout": 1500,
     "scroll_speed": 7,
     "diff_style": "auto",
+    "plugin": ["./herdr-tui-session.js"],
 }

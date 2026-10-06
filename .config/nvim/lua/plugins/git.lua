@@ -1,6 +1,6 @@
 -- https://github.com/esmuellert/codediff.nvim
 return {
-  { "tpope/vim-fugitive" },
+  { "tpope/vim-fugitive", cmd = { "G" } },
   {
     "lewis6991/gitsigns.nvim",
     opts = {

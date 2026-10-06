@@ -39,7 +39,7 @@ return {
     { "<leader>E", function() Snacks.explorer() end, desc = "File Explorer", },
 
     {
-      "<leader>o",
+      "<leader>of",
       function()
         Snacks.picker.buffers({
           win = {
@@ -72,7 +72,7 @@ return {
 
     -- Other
     { "<leader>z", function() Snacks.zen() end, desc = "Toggle Zen Mode", },
-    { "yoz", function() Snacks.zen.zoom() end, desc = "Toggle Zoom", },
+    { "so", function() Snacks.zen.zoom() end, desc = "Toggle Zoom", },
 
     { "Q", function() Snacks.bufdelete() end, desc = "Delete Buffer", },
 

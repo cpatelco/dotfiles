@@ -29,3 +29,11 @@ r() {
     fi
     rm -f -- "$temp_file"
 }
+
+ghnew() {
+    gh repo create "${1:-$(basename "$PWD")}" \
+        --private \
+        --source=. \
+        --remote=origin \
+        --push
+}
